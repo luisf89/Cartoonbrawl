@@ -126,7 +126,7 @@ addEventListener("mousedown", e =>{
     caricaturas.forEach((character,i)=>{
         if(character.collision(obj)){
             console.log('hsy slho')
-            addEventListener("mousemove", onMouseMove);
+            addEventListener("mousemove", onMouseMove2);
             addEventListener("mouseup", onMouseUp);
         }
     })
@@ -138,6 +138,11 @@ addEventListener("mousedown", e =>{
 function onMouseMove(e){
     chowder.x = e.clientX;
     chowder.y = e.clientY;
+}
+
+function onMouseMove2(e){
+    i.x = e.clientX;
+    i.y = e.clientY;
 }
 
 function onMouseUp(e){
