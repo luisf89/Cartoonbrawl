@@ -16,6 +16,7 @@ var Johnny = "./ImagenesC/Johnny.png"
 var PPG = "./ImagenesC/PPG.png"
 var Jack = "./ImagenesC/SJack.png"
 var caricaturas = [];
+var character;
 
 var Album = [Chow, BM, Corraje, Dexter, Edds, Johnny, PPG, Jack]
 
@@ -89,7 +90,7 @@ boton.onclick = function(){
 }
 
 function crear(){
-    let character = new Personajes();
+     character = new Personajes();
     caricaturas.push(character);
 }
 
@@ -127,7 +128,7 @@ addEventListener("mousedown", e =>{
         if(character.collision(obj)){
             console.log('hsy slho')
             addEventListener("mousemove", onMouseMove2);
-            addEventListener("mouseup", onMouseUp);
+            addEventListener("mouseup", onMouseUp2);
         }
     })
 
@@ -141,8 +142,13 @@ function onMouseMove(e){
 }
 
 function onMouseMove2(e){
-    i.x = e.clientX;
-    i.y = e.clientY;
+    character.x = e.clientX;
+    character.y = e.clientY;
+}
+
+function onMouseUp2(e){
+    removeEventListener("mousemove", onMouseMove2);
+    removeEventListener("mouseup", onMouseUp2); 
 }
 
 function onMouseUp(e){
