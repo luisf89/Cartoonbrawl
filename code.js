@@ -15,6 +15,7 @@ var Edds = "./ImagenesC/Edds.png"
 var Johnny = "./ImagenesC/Johnny.png"
 var PPG = "./ImagenesC/PPG.png"
 var Jack = "./ImagenesC/SJack.png"
+var caricaturas = [];
 
 var Album = [Chow, BM, Corraje, Dexter, Edds, Johnny, PPG, Jack]
 
@@ -61,7 +62,6 @@ class Background{
 //Instancias
 var fondo = new Background();
 var chowder = new Personajes();
-var billy = new Personajes();
 
 //Helpers
 function start(){
@@ -82,8 +82,26 @@ function coinsG(){
 boton.onclick = function(){
     if(monedas >= 100){
         monedas = monedas -100;
+        crear();
+        console.log(caricaturas)
     }
 
+}
+
+function crear(){
+    let character = new Personajes();
+    caricaturas.push(character);
+}
+
+function dibujarP(){
+    caricaturas.forEach(function(character){
+        character.draw();
+        if(chowder.collision(character) && Album[0]){
+            chowder.image.src = Album[1]
+        }/* if(chowder.collision(character) && Album[1]){
+            chowder.image.src = Album[2]
+        }*/
+    })
 }
 
 function update(){
@@ -91,32 +109,38 @@ function update(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     fondo.draw();
     chowder.draw();
-    billy.draw();
     coins();
+    dibujarP();
 }
-/*var item = new Personajes()
-addEventListener("click", e => {
+
+var click = 0;
+addEventListener("mousedown", e =>{
+    if(click== 0){
     let {clientX:x, clientY:y} = e;
     let obj = {x, y, width: 10, height:10}
-    item.collision(obj)
-    console.log(obj)
-})*/
-
-addEventListener("mousedown", e =>{
-    if(utils.circlePointCollision(e.clientX, e.clientY, chowder)){
+    
+    if(chowder.collision(obj)){
         addEventListener("mousemove", onMouseMove);
         addEventListener("mouseup", onMouseUp);
     }
+    caricaturas.forEach((character,i)=>{
+        if(character.collision(obj)){
+            console.log('hsy slho')
+            addEventListener("mousemove", onMouseMove);
+            addEventListener("mouseup", onMouseUp);
+        }
+    })
+
+  }
+    
 })
 
 function onMouseMove(e){
     chowder.x = e.clientX;
     chowder.y = e.clientY;
-    draw();
-
 }
 
-function onMOuseUp(e){
+function onMouseUp(e){
     removeEventListener("mousemove", onMouseMove);
     removeEventListener("mouseup", onMouseUp); 
 }
