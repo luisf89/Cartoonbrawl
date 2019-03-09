@@ -1,6 +1,8 @@
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 var dinero;
+var sonido = new Audio();
+sonido.src ="./Super Smash Bros. Brawl - Gerudo Valley.mp3";
 var boton = document.getElementById("bttn")
 var end = document.getElementById("end")
 var item;
