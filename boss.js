@@ -206,7 +206,9 @@ function update(){
     drawSwords();
     drawHealthBar(canvas2,10,10,350,20,health,100);
     drawHealthBar2(canvas2,1480,10,350,20,health2,100);
-    //collisions();
+    ctx.font = "40px Lemon Black";
+    ctx.fillText("Peppa", 1340, 30);
+    ctx.fillText("Jack", 380, 30);
 }
 
 addEventListener('keydown', e =>{
