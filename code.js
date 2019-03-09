@@ -1,8 +1,6 @@
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 var dinero;
-var sonido = new Audio();
-sonido.src ="./Super Smash Bros. Brawl - Gerudo Valley.mp3";
 var boton = document.getElementById("bttn")
 var end = document.getElementById("end")
 var item;
@@ -21,6 +19,9 @@ var Jack = "./ImagenesC/SJack.png"
 var inv = "./ImagenesC/Espada.png"
 var caricaturas = [];
 var character = [];
+
+var sonido = new Audio("./Super Smash Bros. Brawl - Gerudo Valley.mp3");
+sonido.play();
 
 var Album = [Chow, BM, Corraje, Dexter, Edds, Johnny, PPG, Jack,inv]
 
