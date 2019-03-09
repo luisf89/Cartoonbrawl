@@ -2,6 +2,7 @@ var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 var dinero;
 var boton = document.getElementById("bttn")
+var end = document.getElementById("end")
 var item;
 var interval;
 var intervalC;
@@ -15,10 +16,11 @@ var Edds = "./ImagenesC/Edds.png"
 var Johnny = "./ImagenesC/Johnny.png"
 var PPG = "./ImagenesC/PPG.png"
 var Jack = "./ImagenesC/SJack.png"
+var inv = "./ImagenesC/Espada.png"
 var caricaturas = [];
-var character;
+var character = [];
 
-var Album = [Chow, BM, Corraje, Dexter, Edds, Johnny, PPG, Jack]
+var Album = [Chow, BM, Corraje, Dexter, Edds, Johnny, PPG, Jack,inv]
 
 class Personajes{
     constructor(){
@@ -63,6 +65,7 @@ class Background{
 //Instancias
 var fondo = new Background();
 var chowder = new Personajes();
+var chowder2 = new Personajes();
 
 //Helpers
 function start(){
@@ -71,9 +74,9 @@ function start(){
 }
 
 function coins(){
-    ctx.font = "30px Avenir";
-    ctx.fillText("Monedas:", 1400, 30);
-    ctx.fillText(monedas, 1560, 33)
+    ctx.font = "30px Lemon";
+    ctx.fillText("Monedas:", 1390, 30);
+    ctx.fillText(monedas, 1560, 33);
 }
 
 function coinsG(){
@@ -81,8 +84,8 @@ function coinsG(){
     }
 
 boton.onclick = function(){
-    if(monedas >= 100){
-        monedas = monedas -100;
+    if(monedas >= 50){
+        monedas = monedas -50;
         crear();
         console.log(caricaturas)
     }
@@ -97,11 +100,13 @@ function crear(){
 function dibujarP(){
     caricaturas.forEach(function(character){
         character.draw();
-        if(chowder.collision(character) && Album[0]){
+        if(chowder.collision(character)){
             chowder.image.src = Album[1]
-        }/* if(chowder.collision(character) && Album[1]){
-            chowder.image.src = Album[2]
-        }*/
+            caricaturas.splice(0,1)
+        }if(chowder2.collision(character)){
+            chowder2.image.src = Album[1]
+            caricaturas.splice(0,1)
+        }
     })
 }
 
@@ -110,11 +115,14 @@ function update(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     fondo.draw();
     chowder.draw();
+    chowder2.draw();
     coins();
     dibujarP();
 }
 
 var click = 0;
+
+
 addEventListener("mousedown", e =>{
     if(click== 0){
     let {clientX:x, clientY:y} = e;
@@ -124,9 +132,17 @@ addEventListener("mousedown", e =>{
         addEventListener("mousemove", onMouseMove);
         addEventListener("mouseup", onMouseUp);
     }
-    caricaturas.forEach((character,i)=>{
+    if(chowder2.collision(obj)){
+        addEventListener("mousemove", onMouseMove3);
+        addEventListener("mouseup", onMouseUp3);
+    }
+    if(chowder.collision(chowder2)){
+        chowder.image.src = Album[2]
+        chowder2.image.src = Album[8];
+    }
+    caricaturas.forEach((character, i)=>{
         if(character.collision(obj)){
-            console.log('hsy slho')
+            console.log(character.collision(obj))
             addEventListener("mousemove", onMouseMove2);
             addEventListener("mouseup", onMouseUp2);
         }
@@ -145,6 +161,10 @@ function onMouseMove2(e){
     character.x = e.clientX;
     character.y = e.clientY;
 }
+function onMouseMove3(e){
+    chowder2.x = e.clientX;
+    chowder2.y = e.clientY;
+}
 
 function onMouseUp2(e){
     removeEventListener("mousemove", onMouseMove2);
@@ -155,6 +175,11 @@ function onMouseUp(e){
     removeEventListener("mousemove", onMouseMove);
     removeEventListener("mouseup", onMouseUp); 
 }
+function onMouseUp3(e){
+    removeEventListener("mousemove", onMouseMove3);
+    removeEventListener("mouseup", onMouseUp3); 
+}
+
       
 start();
         

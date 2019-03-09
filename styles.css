@@ -21,6 +21,12 @@ body{
     background-color: transparent;
     position: absolute;
 }
+#end{
+    display:flex;
+    background-color: transparent;
+    position: absolute;
+    justify-content: normal;
+}
 
 #canvas{
     
