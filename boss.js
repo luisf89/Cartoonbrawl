@@ -77,14 +77,14 @@ class Fondo{
         sonido.pause();
         clearInterval(interval);
         ctx.font = "40px Lemon";
-        ctx.fillText("Ganaste",115,110)
+        ctx.fillText("Ganaste",800,190)
     }
 
     gameOver2(){
         sonido.pause();
         clearInterval(interval);
         ctx.font = "40px Lemon";
-        ctx.fillText("Perdiste",115,110)
+        ctx.fillText("Perdiste",800,190)
     }
 }
 
@@ -189,7 +189,7 @@ function drawTocino(){
             health = health -2;
         }if(samurai.collision(tocino)){
             enemigos.splice(0,1)
-        }if(health === 0){
+        }if(health == 0){
             fondo.gameOver2();
         }
     })
@@ -220,11 +220,11 @@ function drawSwords(){
     espadas.forEach(function(katana){
         katana.draw();
         if(boss.collision(katana)){
-            health2 = health2 -3;
             sonido3.play();
+            health2 = health2 -2;
         }if(boss.collision(katana)){
             espadas.splice(0,1);
-        }if(health2 === 0){
+        }if(health2 ==0){
             fondo.gameOver();
         }
     })

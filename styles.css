@@ -44,6 +44,15 @@ body{
 .boton{
     margin-right: 100px;
     margin-top: 7px;
+    
+    color: white;
+    font-size: 1em;
+    letter-spacing: 0.5px;
+    width: 125px;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 12px;
 }
 .inicio{
     
@@ -65,13 +74,40 @@ h1{
 
 .picale{
     font-family: 'Lemon', cursive;
+    background-color: rgb(203, 56, 55);
+    color: white;
+    font-size: 1em;
+    letter-spacing: 0.5px;
+    width: 175px;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 12px;
 }
 
 #bttn{
     font-family: 'Lemon', cursive;
+    background-color: rgb(203, 56, 55);
+    color: white;
+    font-size: 1em;
+    letter-spacing: 0.5px;
+    width: 135px;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 12px;
 }
 
 .regresar{
     font-family: 'Lemon', cursive;
     margin-top: 90vh;
+    background-color: rgb(203, 56, 55);
+    color: white;
+    font-size: 1em;
+    letter-spacing: 0.5px;
+    width: 135px;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 12px;
 }
