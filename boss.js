@@ -9,6 +9,11 @@ var score = 0;
 var health = 100;
 var health2 = 100;
 
+var sonido = new Audio("./Super Smash Bros. Brawl - Boss Battle.mp3");
+var sonido2 = new Audio("./Realistic_Punch-Mark_DiAngelo-1609462330.mp3") 
+var sonido3 = new Audio("./Upper Cut-SoundBible.com-1272257235.mp3")
+sonido.play();
+
 class Peleador{
     constructor(){
         this.x = 925;
@@ -97,6 +102,7 @@ class Espada{
     }
 
     draw(){
+        sonido2.play();
         if(frames % 10 === 0) this.y -= 50;
         ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
     }
@@ -166,6 +172,7 @@ function drawTocino(){
     enemigos.forEach(function(tocino){
         tocino.draw();
         if(samurai.collision(tocino)){
+            sonido3.play();
             health = health -2;
         }if(samurai.collision(tocino)){
             enemigos.splice(0,1)
@@ -198,6 +205,7 @@ function drawSwords(){
         katana.draw();
         if(boss.collision(katana)){
             health2 = health2 -3;
+            sonido3.play();
         }if(boss.collision(katana)){
             espadas.splice(0,1);
         }
