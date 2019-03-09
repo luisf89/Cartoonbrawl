@@ -28,6 +28,15 @@ body{
     justify-content: normal;
 }
 
+#instrucciones{
+    background-image: url("./ImagenesC/instrucciones.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    background-position: center center;
+    text-align: center;
+}
+
 #canvas{
     
 }
@@ -60,4 +69,9 @@ h1{
 
 #bttn{
     font-family: 'Lemon', cursive;
+}
+
+.regresar{
+    font-family: 'Lemon', cursive;
+    margin-top: 90vh;
 }

@@ -72,6 +72,20 @@ class Fondo{
     draw(){
         ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
     }
+
+    gameOver(){
+        sonido.pause();
+        clearInterval(interval);
+        ctx.font = "40px Lemon";
+        ctx.fillText("Ganaste",115,110)
+    }
+
+    gameOver2(){
+        sonido.pause();
+        clearInterval(interval);
+        ctx.font = "40px Lemon";
+        ctx.fillText("Perdiste",115,110)
+    }
 }
 
 class Tocino{
@@ -102,7 +116,6 @@ class Espada{
     }
 
     draw(){
-        sonido2.play();
         if(frames % 10 === 0) this.y -= 50;
         ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
     }
@@ -176,6 +189,8 @@ function drawTocino(){
             health = health -2;
         }if(samurai.collision(tocino)){
             enemigos.splice(0,1)
+        }if(health === 0){
+            fondo.gameOver2();
         }
     })
 }
@@ -198,6 +213,7 @@ addEventListener('keydown', e =>{
     if(e.keyCode === 38){
         let katana = new Espada();
         espadas.push(katana)
+        sonido2.play();
     }
 })
 function drawSwords(){
@@ -208,6 +224,8 @@ function drawSwords(){
             sonido3.play();
         }if(boss.collision(katana)){
             espadas.splice(0,1);
+        }if(health2 === 0){
+            fondo.gameOver();
         }
     })
 }
